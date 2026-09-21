@@ -1,0 +1,182 @@
+.titulo-matrix {
+  color: #00ff41;
+  font-family: monospace;
+  font-weight: bold;
+  letter-spacing: 4px;
+  text-shadow: 0 0 10px #00ff41;
+}
+
+
+.subtitulo-matrix {
+  color: #bfbfbf;
+}
+
+
+/* CARD PRINCIPAL */
+
+.card-matrix {
+  background-color: #111111;
+  color: white;
+
+  border: 1px solid #2d2d2d;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 0 25px rgba(0, 255, 65, 0.12);
+}
+
+
+/* TÍTULOS DAS SEÇÕES */
+
+.titulo-bloco {
+  color: #00ff41;
+
+  font-family: monospace;
+
+  font-weight: bold;
+}
+
+
+/* LABELS */
+
+.form-label {
+  color: #dddddd;
+}
+
+
+/* BLOCOS DE PAGAMENTO */
+
+.pagamento-matrix {
+  background-color: #080808;
+
+  border: 1px solid #333333;
+
+  border-left: 4px solid #00ff41;
+
+  border-radius: 10px;
+
+  padding: 20px;
+
+  margin-top: 15px;
+}
+
+
+.pagamento-matrix h5 {
+  color: #00ff41;
+
+  font-family: monospace;
+
+  font-weight: bold;
+}
+
+
+/* TEXTO VERDE */
+
+.texto-verde {
+  color: #00ff41;
+
+  font-family: monospace;
+
+  word-break: break-word;
+}
+
+
+/* RESUMO */
+
+.resumo-matrix {
+  background-color: #080808;
+
+  border: 1px solid #333333;
+
+  border-radius: 12px;
+
+  padding: 25px;
+}
+
+
+/* LINHA */
+
+hr {
+  border-color: #00ff41;
+
+  opacity: 0.4;
+}
+
+
+/* TOTAL */
+
+.total-final {
+  color: #00ff41;
+
+  font-size: 23px;
+
+  font-weight: bold;
+}
+
+
+/* CAMPO VÁLIDO */
+
+.form-control.ng-valid.ng-touched,
+.form-select.ng-valid.ng-touched {
+  border-color: #00ff41;
+}
+
+
+/* CAMPO INVÁLIDO */
+
+.form-control.ng-invalid.ng-touched,
+.form-select.ng-invalid.ng-touched {
+  border-color: #dc3545;
+}
+
+
+/* BOTÃO DESABILITADO */
+
+.btn-matrix:disabled {
+  background-color: #444444;
+
+  border-color: #444444;
+
+  color: #999999;
+
+  box-shadow: none;
+}
+
+
+/* MENSAGEM DE SUCESSO */
+
+.alert-success {
+  background-color: rgba(0, 255, 65, 0.12);
+
+  color: #00ff41;
+
+  border: 1px solid #00ff41;
+}
+
+
+/* CELULAR */
+
+@media (max-width: 576px) {
+
+  .titulo-matrix {
+    font-size: 28px;
+  }
+
+  .card-body {
+    padding: 22px !important;
+  }
+
+  .resumo-matrix {
+    padding: 18px;
+  }
+
+  .pagamento-matrix {
+    padding: 15px;
+  }
+
+  .total-final {
+    font-size: 19px;
+  }
+
+}
