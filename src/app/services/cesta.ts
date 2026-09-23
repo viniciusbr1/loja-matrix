@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 import { ItemCesta } from '../models/item-cesta';
 import { Produto } from '../models/produto';
@@ -14,6 +15,43 @@ export class CestaService {
 
   frete: number = 0;
 
+  constructor(
+    @Inject(PLATFORM_ID)
+    private platformId: Object
+  ) {
+
+    if (isPlatformBrowser(this.platformId)) {
+      this.carregarCesta();
+    }
+
+  }
+
+  carregarCesta() {
+
+    const cestaSalva =
+      localStorage.getItem('matrix_cesta');
+
+    if (cestaSalva != null) {
+
+      this.itens =
+        JSON.parse(cestaSalva);
+
+    }
+
+  }
+
+  salvarCesta() {
+
+    if (isPlatformBrowser(this.platformId)) {
+
+      localStorage.setItem(
+        'matrix_cesta',
+        JSON.stringify(this.itens)
+      );
+
+    }
+
+  }
 
   adicionarProduto(produto: Produto) {
 
@@ -36,8 +74,9 @@ export class CestaService {
 
     }
 
-  }
+    this.salvarCesta();
 
+  }
 
   getItens() {
 
@@ -45,13 +84,13 @@ export class CestaService {
 
   }
 
-
   aumentarQuantidade(item: ItemCesta) {
 
     item.quantidade++;
 
-  }
+    this.salvarCesta();
 
+  }
 
   diminuirQuantidade(item: ItemCesta) {
 
@@ -61,8 +100,9 @@ export class CestaService {
 
     }
 
-  }
+    this.salvarCesta();
 
+  }
 
   removerItem(item: ItemCesta) {
 
@@ -74,8 +114,9 @@ export class CestaService {
 
     }
 
-  }
+    this.salvarCesta();
 
+  }
 
   calcularTotalProdutos() {
 
@@ -83,7 +124,9 @@ export class CestaService {
 
     for (let item of this.itens) {
 
-      total += item.produto.preco * item.quantidade;
+      total +=
+        item.produto.preco *
+        item.quantidade;
 
     }
 
@@ -91,13 +134,11 @@ export class CestaService {
 
   }
 
-
   salvarDesconto(valor: number) {
 
     this.desconto = valor;
 
   }
-
 
   getDesconto() {
 
@@ -105,20 +146,17 @@ export class CestaService {
 
   }
 
-
   salvarFrete(valor: number) {
 
     this.frete = valor;
 
   }
 
-
   getFrete() {
 
     return this.frete;
 
   }
-
 
   calcularTotalFinal() {
 
@@ -128,14 +166,18 @@ export class CestaService {
 
   }
 
-
   limparCesta() {
 
-    this.itens.splice(0, this.itens.length);
+    this.itens.splice(
+      0,
+      this.itens.length
+    );
 
     this.desconto = 0;
 
     this.frete = 0;
+
+    this.salvarCesta();
 
   }
 
